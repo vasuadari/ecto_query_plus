@@ -20,6 +20,6 @@ defmodule EctoSqlPlus.MixProject do
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
-    [ecto_sql: "~> 3.0"]
+    [ecto: "~> 3.0"]
   end
 end

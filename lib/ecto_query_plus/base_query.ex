@@ -1,4 +1,4 @@
-defmodule EctoSqlPlus.BaseQuery do
+defmodule EctoQueryPlus.BaseQuery do
   import Ecto.Query
 
   defmacro ecto_where(query, binding, expr) do

@@ -1,4 +1,4 @@
-defmodule EctoSqlPlusTest do
+defmodule EctoQueryPlusTest do
   use ExUnit.Case
 
   @query "posts"
@@ -13,7 +13,7 @@ defmodule EctoSqlPlusTest do
           op: :and,
           params: [{1, {0, :a}}]
         }]
-      } = EctoSqlPlus.where(@query, a: 1)
+      } = EctoQueryPlus.where(@query, a: 1)
     end
 
     test "returns expected Ecto.Query with where clause for two field" do
@@ -31,7 +31,7 @@ defmodule EctoSqlPlusTest do
             params: [{2, {0, :b}}]
           }
         ]
-      } = EctoSqlPlus.where(@query, a: 1, b: 2)
+      } = EctoQueryPlus.where(@query, a: 1, b: 2)
     end
 
     test "returns expected Ecto.Query with where clause for array values" do
@@ -45,7 +45,7 @@ defmodule EctoSqlPlusTest do
             params: [{[2, 3], {:in, {0, :a}}}]
           }
         ]
-      } = EctoSqlPlus.where(@query, a: [2, 3])
+      } = EctoQueryPlus.where(@query, a: [2, 3])
     end
   end
 end

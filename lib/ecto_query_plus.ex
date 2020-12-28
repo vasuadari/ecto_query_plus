@@ -1,4 +1,4 @@
-defmodule EctoSqlPlus do
+defmodule EctoQueryPlus do
   import __MODULE__.BaseQuery
 
   def where(query, nil), do: query

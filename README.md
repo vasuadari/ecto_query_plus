@@ -15,7 +15,7 @@ end
 ```
 ## Usage
 
-```
+```elixir
 defmodule Accounts.User do
   schema "users" do
     field(:name, :string)
@@ -26,7 +26,7 @@ defmodule Accounts.User do
 end
 ```
 
-```
+```elixir
 defmodule Accounts.User.Query do
   use EctoQueryPlus
 
@@ -45,7 +45,7 @@ end
 ```
 
 Now, you could simply query like
-```
+```elixir
 User.Query
 |> list(
   [

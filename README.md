@@ -65,23 +65,23 @@ User.Query
 
 ## Available operators to filter by
 
-- {field, :gte, value}
-- {field, :gt, value}
-- {field, :lt, value}
-- {field, :lte, value}
-- {field, :ilike, pattern}
-- {field, nil}
-- {field, :not_nil}
-- {field, list}
+- `{field, :gte, value}`
+- `{field, :gt, value}`
+- `{field, :lt, value}`
+- `{field, :lte, value}`
+- `{field, :ilike, pattern}`
+- `{field, nil}`
+- `{field, :not_nil}`
+- `{field, list}`
 
 ## Available options
 
-- {:select, list}
-- {:offset, integer_value}
-- {:limit, integer_value}
-- {:order_by, {field, :asc}}
-- {:order_by, {field, :desc}}
-- {:preload, list}
+- `{:select, list}`
+- `{:offset, integer_value}`
+- `{:limit, integer_value}`
+- `{:order_by, {field, :asc}}`
+- `{:order_by, {field, :desc}}`
+- `{:preload, list}`
 
 ## License
 [MIT](LICENSE.md)

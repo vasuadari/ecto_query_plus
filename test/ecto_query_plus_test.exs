@@ -3,7 +3,7 @@ defmodule EctoQueryPlusTest do
 
   @query "posts"
 
-  describe "where/2" do
+  describe "wherep/2" do
     test "returns valid Ecto.Query with where clause for a field" do
       assert %Ecto.Query{
                from: %{
@@ -16,7 +16,7 @@ defmodule EctoQueryPlusTest do
                    params: [{1, {0, :a}}]
                  }
                ]
-             } = EctoQueryPlus.where(@query, a: 1)
+             } = EctoQueryPlus.wherep(@query, a: 1)
     end
 
     test "returns valid Ecto.Query with where clause for two field" do
@@ -36,7 +36,7 @@ defmodule EctoQueryPlusTest do
                    params: [{2, {0, :b}}]
                  }
                ]
-             } = EctoQueryPlus.where(@query, a: 1, b: 2)
+             } = EctoQueryPlus.wherep(@query, a: 1, b: 2)
     end
 
     test "returns valid Ecto.Query with where clause for array values" do
@@ -51,7 +51,7 @@ defmodule EctoQueryPlusTest do
                    params: [{[2, 3], {:in, {0, :a}}}]
                  }
                ]
-             } = EctoQueryPlus.where(@query, a: [2, 3])
+             } = EctoQueryPlus.wherep(@query, a: [2, 3])
     end
 
     test "returns valid Ecto.Query with where clause with gte condition" do
@@ -66,7 +66,7 @@ defmodule EctoQueryPlusTest do
                    params: [{2, {0, :a}}]
                  }
                ]
-             } = EctoQueryPlus.where(@query, [{:a, :gte, 2}])
+             } = EctoQueryPlus.wherep(@query, [{:a, :gte, 2}])
     end
 
     test "returns valid Ecto.Query with where clause with gt condition" do
@@ -81,7 +81,7 @@ defmodule EctoQueryPlusTest do
                    params: [{2, {0, :a}}]
                  }
                ]
-             } = EctoQueryPlus.where(@query, [{:a, :gt, 2}])
+             } = EctoQueryPlus.wherep(@query, [{:a, :gt, 2}])
     end
 
     test "returns valid Ecto.Query with where clause with lt condition" do
@@ -96,7 +96,7 @@ defmodule EctoQueryPlusTest do
                    params: [{2, {0, :a}}]
                  }
                ]
-             } = EctoQueryPlus.where(@query, [{:a, :lt, 2}])
+             } = EctoQueryPlus.wherep(@query, [{:a, :lt, 2}])
     end
 
     test "returns valid Ecto.Query with where clause with lte condition" do
@@ -111,7 +111,7 @@ defmodule EctoQueryPlusTest do
                    params: [{2, {0, :a}}]
                  }
                ]
-             } = EctoQueryPlus.where(@query, [{:a, :lte, 2}])
+             } = EctoQueryPlus.wherep(@query, [{:a, :lte, 2}])
     end
 
     test "returns valid Ecto.Query with where clause with ilike condition" do
@@ -126,7 +126,7 @@ defmodule EctoQueryPlusTest do
                    params: [{"%2%", :string}]
                  }
                ]
-             } = EctoQueryPlus.where(@query, [{:a, :ilike, 2}])
+             } = EctoQueryPlus.wherep(@query, [{:a, :ilike, 2}])
     end
 
     test "returns valid Ecto.Query with where clause with nil condition" do
@@ -141,7 +141,7 @@ defmodule EctoQueryPlusTest do
                    params: []
                  }
                ]
-             } = EctoQueryPlus.where(@query, [{:a, nil}])
+             } = EctoQueryPlus.wherep(@query, [{:a, nil}])
 
       assert "is_nil(&0.a())" == Macro.to_string(expr)
     end
@@ -158,13 +158,13 @@ defmodule EctoQueryPlusTest do
                    params: []
                  }
                ]
-             } = EctoQueryPlus.where(@query, [{:a, :not_nil}])
+             } = EctoQueryPlus.wherep(@query, [{:a, :not_nil}])
 
       assert "not(is_nil(&0.a()))" == Macro.to_string(expr)
     end
   end
 
-  describe "offset/2" do
+  describe "offsetp/2" do
     test "returns valid Ecto.Query with given offset" do
       assert %Ecto.Query{
                from: %{
@@ -174,15 +174,15 @@ defmodule EctoQueryPlusTest do
                  expr: {:^, [], [0]},
                  params: [{1, :integer}]
                }
-             } = EctoQueryPlus.offset(@query, 1)
+             } = EctoQueryPlus.offsetp(@query, 1)
     end
 
     test "returns query as such when given offset is nil" do
-      assert @query = EctoQueryPlus.offset(@query, nil)
+      assert @query = EctoQueryPlus.offsetp(@query, nil)
     end
   end
 
-  describe "limit/2" do
+  describe "limitp/2" do
     test "returns valid Ecto.Query with given limit" do
       assert %Ecto.Query{
                from: %{
@@ -192,15 +192,15 @@ defmodule EctoQueryPlusTest do
                  expr: {:^, [], [0]},
                  params: [{1, :integer}]
                }
-             } = EctoQueryPlus.limit(@query, 1)
+             } = EctoQueryPlus.limitp(@query, 1)
     end
 
     test "returns query as such when given limit is nil" do
-      assert @query = EctoQueryPlus.limit(@query, nil)
+      assert @query = EctoQueryPlus.limitp(@query, nil)
     end
   end
 
-  describe "select/2" do
+  describe "selectp/2" do
     test "returns Ecto.Query with valid select expr for one field" do
       assert %Ecto.Query{
                from: %{
@@ -210,7 +210,7 @@ defmodule EctoQueryPlusTest do
                  expr: {:&, [], [0]},
                  take: %{0 => {:any, [:a]}}
                }
-             } = EctoQueryPlus.select(@query, [:a])
+             } = EctoQueryPlus.selectp(@query, [:a])
     end
 
     test "returns Ecto.Query with valid select expr for more than one field" do
@@ -222,15 +222,15 @@ defmodule EctoQueryPlusTest do
                  expr: {:&, [], [0]},
                  take: %{0 => {:any, [:a, :b]}}
                }
-             } = EctoQueryPlus.select(@query, [:a, :b])
+             } = EctoQueryPlus.selectp(@query, [:a, :b])
     end
 
     test "returns query as such when given select is nil" do
-      assert @query = EctoQueryPlus.select(@query, nil)
+      assert @query = EctoQueryPlus.selectp(@query, nil)
     end
   end
 
-  describe "order_by/2" do
+  describe "order_byp/2" do
     test "returns Ecto.Query with valid order_bys for asc" do
       assert %Ecto.Query{
                from: %{
@@ -241,7 +241,7 @@ defmodule EctoQueryPlusTest do
                    expr: expr
                  }
                ]
-             } = EctoQueryPlus.order_by(@query, {:a, :asc})
+             } = EctoQueryPlus.order_byp(@query, {:a, :asc})
 
       assert "[asc: &0.a()]" = Macro.to_string(expr)
     end
@@ -256,24 +256,24 @@ defmodule EctoQueryPlusTest do
                    expr: expr
                  }
                ]
-             } = EctoQueryPlus.order_by(@query, {:a, :desc})
+             } = EctoQueryPlus.order_byp(@query, {:a, :desc})
 
       assert "[desc: &0.a()]" = Macro.to_string(expr)
     end
 
     test "returns query as such when given order_by is nil" do
-      assert @query = EctoQueryPlus.order_by(@query, nil)
+      assert @query = EctoQueryPlus.order_byp(@query, nil)
     end
   end
 
-  describe "preload/2" do
+  describe "preloadp/2" do
     test "returns Ecto.Query with valid preloads for one entry" do
       assert %Ecto.Query{
                from: %{
                  source: {"posts", nil}
                },
                preloads: [[:a]]
-             } = EctoQueryPlus.preload(@query, [:a])
+             } = EctoQueryPlus.preloadp(@query, [:a])
     end
 
     test "returns Ecto.Query with valid preloads for more than one entry" do
@@ -282,11 +282,11 @@ defmodule EctoQueryPlusTest do
                  source: {"posts", nil}
                },
                preloads: [[:a, :b]]
-             } = EctoQueryPlus.preload(@query, [:a, :b])
+             } = EctoQueryPlus.preloadp(@query, [:a, :b])
     end
 
     test "returns query as such when given preload is nil" do
-      assert @query = EctoQueryPlus.preload(@query, nil)
+      assert @query = EctoQueryPlus.preloadp(@query, nil)
     end
   end
 end

@@ -34,12 +34,12 @@ defmodule Accounts.User.Query do
 
   def list(filters, options \\ %{}) do
     User.Query
-    |> where(filters)
-    |> offset(options[:offset])
-    |> limit(options[:limit])
-    |> select(options[:select]])
-    |> order_by(options[:order_by])
-    |> preload(options[:preload])
+    |> wherep(filters)
+    |> offsetp(options[:offset])
+    |> limitp(options[:limit])
+    |> selectp(options[:select]])
+    |> order_byp(options[:order_by])
+    |> preloadp(options[:preload])
   end
 end
 ```

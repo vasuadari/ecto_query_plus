@@ -2,7 +2,7 @@ defmodule EctoQueryPlus.MixProject do
   use Mix.Project
 
   @github_url "https://github.com/vasuadari/ecto_query_plus"
-  @version "0.1.2"
+  @version "0.1.3"
 
   def project do
     [
@@ -34,17 +34,15 @@ defmodule EctoQueryPlus.MixProject do
 
   defp docs do
     [
-      main: "api-reference",
+      main: "readme",
       source_ref: "v#{@version}",
       source_url: "https://github.com/vasuadari/ecto_query_plus",
-      homepage_url: "https://hexdocs.pm/ecto_query_plus/readme.html#content",
       extras: ["README.md"]
     ]
   end
 
   defp package do
     [
-      name: "ecto_query_plus",
       licenses: ["MIT"],
       links: %{"Github" => @github_url}
     ]

@@ -2,7 +2,7 @@ defmodule EctoQueryPlus.MixProject do
   use Mix.Project
 
   @github_url "https://github.com/vasuadari/ecto_query_plus"
-  @version "0.1.0"
+  @version "0.1.1"
 
   def project do
     [

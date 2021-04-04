@@ -9,7 +9,7 @@ by adding `ecto_query_plus` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:ecto_query_plus, "~> 0.1.0"}
+    {:ecto_query_plus, "~> 0.1.1"}
   ]
 end
 ```

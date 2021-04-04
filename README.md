@@ -50,7 +50,7 @@ User.Query
 |> list(
   [
     {:name, :not_nil},
-    {:email, ["foo@example.com"],
+    {:email, ["foo@example.com"]},
     {:last_login_at, :gt, DateTime.utc_now()},
     {:locked_at, nil}
   ],

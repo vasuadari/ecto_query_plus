@@ -3,8 +3,7 @@ Lets you compose ecto queries in a functional way.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `ecto_query_plus` to your list of dependencies in `mix.exs`:
+Add `ecto_query_plus` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do

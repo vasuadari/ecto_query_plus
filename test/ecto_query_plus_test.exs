@@ -114,6 +114,21 @@ defmodule EctoQueryPlusTest do
              } = EctoQueryPlus.wherep(@query, [{:a, :lte, 2}])
     end
 
+    test "returns valid Ecto.Query with where clause with ne condition" do
+      assert %Ecto.Query{
+               from: %{
+                 source: {"posts", nil}
+               },
+               wheres: [
+                 %{
+                   expr: {:!=, _, _},
+                   op: :and,
+                   params: [{2, {0, :a}}]
+                 }
+               ]
+             } = EctoQueryPlus.wherep(@query, [{:a, :ne, 2}])
+    end
+
     test "returns valid Ecto.Query with where clause with ilike condition" do
       assert %Ecto.Query{
                from: %{
@@ -160,7 +175,7 @@ defmodule EctoQueryPlusTest do
                ]
              } = EctoQueryPlus.wherep(@query, [{:a, :not_nil}])
 
-      assert "not(is_nil(&0.a()))" == Macro.to_string(expr)
+      assert ("not(is_nil(&0.a()))" == Macro.to_string(expr) or "not is_nil(&0.a())" == Macro.to_string(expr))
     end
   end
 

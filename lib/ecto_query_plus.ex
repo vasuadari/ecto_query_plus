@@ -28,6 +28,12 @@ defmodule EctoQueryPlus do
     |> wherep(other_filters)
   end
 
+  def wherep(query, [{field, :ne, value} | other_filters]) do
+    query
+    |> ecto_where([t], field(t, ^field) != ^value)
+    |> wherep(other_filters)
+  end
+
   def wherep(query, [{field, :ilike, value} | other_conds]) do
     query
     |> ecto_where([t], ilike(field(t, ^field), ^"%#{value}%"))

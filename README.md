@@ -8,7 +8,7 @@ Add `ecto_query_plus` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:ecto_query_plus, "~> 0.1.1"}
+    {:ecto_query_plus, "~> 0.1"}
   ]
 end
 ```
@@ -16,6 +16,8 @@ end
 
 ```elixir
 defmodule Accounts.User do
+  use Ecto.Schema
+
   schema "users" do
     field(:name, :string)
     field(:email, :string)
@@ -27,7 +29,7 @@ end
 
 ```elixir
 defmodule Accounts.User.Query do
-  use EctoQueryPlus
+  import EctoQueryPlus
 
   alias Accounts.User
 
@@ -36,7 +38,7 @@ defmodule Accounts.User.Query do
     |> wherep(filters)
     |> offsetp(options[:offset])
     |> limitp(options[:limit])
-    |> selectp(options[:select]])
+    |> selectp(options[:select])
     |> order_byp(options[:order_by])
     |> preloadp(options[:preload])
   end
